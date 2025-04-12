@@ -10,6 +10,24 @@ from components.logout import logout
 def main():
 
     st.set_page_config("Secure Data Encryption", layout="centered")
+    st.markdown(
+    """
+    <style>
+    .element-container > div:first-child {
+        background-color: transparent !important;
+    }
+
+    .menu .container-xxl[data-v-5af006b8] {
+        background-color: #1e1e1e !important;  /* dark background */
+        border-radius: .5rem;
+    }
+
+    .p-3 {
+        padding: 1rem !important;
+        background-color: #1e1e1e !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
     if st.session_state.get("logged_in", False):
         
@@ -21,7 +39,7 @@ def main():
             menu_icon=None,
             default_index=0,
             styles={
-                "container": {"padding": "5px", "background-color": "#f0f2f6"},
+                "container": {"padding": "5px", "background-color": "transparent"},
                 "nav-link": {"font-size": "16px", "text-align": "left", "margin": "5px"},
                 "nav-link-selected": {"background-color": "#ff4b4b"},
             },
