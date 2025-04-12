@@ -3,9 +3,6 @@ from function_modules import authentication
 
 def login():
 
-    if "username" not in st.session_state:
-        st.session_state.username = ""
-
     st.title("Login")
     tab1,tab2 = st.tabs(["**Register**", "**Login**"])
 
@@ -19,9 +16,11 @@ def login():
             
             if not username or not password or not confirm_password:
                 st.error("All Fields Required")
+            elif len(password) < 8:
+                st.error("Password must be Aleast 8 characters")
             elif password != confirm_password:
                 st.error("Password and Confirm Password do not match")
-            else:
+            else:                                    
                 if authentication.register_user(username, password):
                     st.success("Account Registered Successfully")
                 else:
@@ -39,7 +38,7 @@ def login():
             if username and password:
                 if authentication.login_user(username,password):
                     st.session_state["logged_in"] = True
-                    st.session_state.username = username
+                    st.session_state.user_name = username
                     st.success("Login Successfully")
                     st.rerun()
                 else:

@@ -1,9 +1,8 @@
 import streamlit as st
 
-if "username" in st.session_state:
-    username = st.session_state.username
-
 def home():
+        username = st.session_state.user_name
+        username = username.capitalize()
         st.title("🔐Secure Data Encryption")
         st.write("This app is designed to ensure the secure handling of sensitive user data through **encryption and decryption mechanisms**.")
         st.markdown(f"""
